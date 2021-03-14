@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>Algorithm collection</title>
+        <link rel="shortcut icon" href="Icon.png">
+
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+
+    <body>
+        <div>
+            <div>
+                Map options:
+                <button onclick="reloadMap()"> Reload map </button>
+
+                <label for="width"> Width </label>
+                <input type="number" id="width" value="25">
+
+                <label for="height"> Height </label>
+                <input type="number" id="height" value="15">
+
+                <label for="cellsize"> Cell size(px) </label>
+                <input type="number" id="cellsize" value="25">
+
+                <label for="grid"> Grid </label>
+                <input type="checkbox" id="grid" checked></input>
+            </div>
+
+            <div>
+                <label for="maptype"> Map type </label>
+                <select id="maptype" onchange='setMapOptions()'>
+
+                    <option value="maze" selected="selected"> Maze </option>
+                    <option value="cave"> Cave </option>
+                    <option value="terrain"> Terrain </option>
+
+                </select>
+
+                <label for="seed"> Seed </label>
+                <input type="text" id="seed" value="">
+
+                <label for="setseed"> Set seed </label>
+                <input type="checkbox" id="setseed"></input>
+            </div>
+
+            <div id="options"> 
+                Map type options
+            </div>
+
+            <div>
+                Player input
+
+                <button onclick="setClickAction('moddify')"> Moddify map </button>
+
+                <button onclick="setClickAction('start')"> Select start point </button>
+
+                <button onclick="setClickAction('goal')"> Place goal points </button>
+            </div>
+
+            <div id="mapcontainer"></div>
+        </div>
+        <br>
+
+    </body>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/utility.js"></script>
+    <script src="scripts/maze.js"></script>
+    <script src="scripts/cave.js"></script>
+    <script src="scripts/terrain.js"></script>
+</html>

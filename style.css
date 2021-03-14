@@ -1,0 +1,89 @@
+body {
+    background-color: LightBlue;
+}
+
+div {
+    margin: 5px;
+}
+
+#map {
+    border: 2px solid Black;
+    margin: auto;
+    border-spacing:0;
+}
+
+.biome {
+    width: 25px;
+    height: 25px;
+    display:inline-block;
+    border: 1px solid Gray;
+}
+
+.selectedbiome {
+    border: 2px solid DarkGray;
+}
+
+.border {
+    border: 1px solid Black;
+}
+
+.cell {
+    padding: 0;
+    margin: 0;
+}
+
+.cell:hover {
+    outline: 3px solid black;
+}
+
+.start {
+    background-color: Orange;
+    opacity: 0.5;
+}
+
+.path {
+    background-color: OrangeRed;
+    opacity: 0.5;
+}
+
+.goal {
+    background-color: Firebrick;
+    opacity: 0.5;
+}
+
+.mazeempty {
+    background-color: LightGray;
+}
+
+.mazewall {
+    background-color: Gray;
+}
+
+.caveempty {
+    background-color: SandyBrown;
+}
+
+.cavewall {
+    background-color: SaddleBrown;
+}
+
+/* Turn off arrows in input on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Turn off arrows in input on Firefox */
+/* Makes the input smaller and centers text */
+input[type=number] {
+    -moz-appearance: textfield;
+
+    width: 3em;
+    text-align: center; 
+}
+
+/* Shortens text input */
+input[type=text] {
+    width: 6em;
+}
