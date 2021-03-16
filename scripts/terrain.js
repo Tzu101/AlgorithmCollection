@@ -1,17 +1,20 @@
-let biomes= [[40, [0, 51, 204], "Deep ocean"], 
-            [80, [0, 102, 255], "Shallow ocean"], 
-            [95, [255, 255, 153], "Beach"], 
-            [150, [102, 255, 51], "Plains"], 
-            [170, [0, 153, 0], "Oak forrest"], 
-            [190, [0, 153, 51], "Pine forrest"], 
-            [210, [153, 102, 51], "Mountain"], 
-            [240, [102, 51, 0], "Cliff"], 
-            [255, [255, 255, 255], "Snow"]];
+// Default biomes
+let biomes= [[40, [0, 51, 204], "Deep ocean", 0], 
+            [80, [0, 102, 255], "Shallow ocean", 0], 
+            [95, [255, 255, 153], "Beach", 1], 
+            [150, [102, 255, 51], "Plains", 2], 
+            [170, [0, 153, 0], "Oak forrest", 3], 
+            [190, [0, 153, 51], "Pine forrest", 4], 
+            [210, [153, 102, 51], "Mountain", 5], 
+            [240, [102, 51, 0], "Cliff", 6], 
+            [255, [255, 255, 255], "Snow", 7]];
 let selectedBiome;
 let biomeNum = 1;
 
+// Creates the biome selector from biomes
 function updateBiomeSelector(keepSelected=false) {
 
+    // click function for selection biome
     function onClick() {
         
         saveBiome();
@@ -27,6 +30,7 @@ function updateBiomeSelector(keepSelected=false) {
         return b1[0] - b2[0];
     }
 
+    // Biomes sorted by height
     biomes.sort(compareBiome);
     if(!keepSelected) selectedBiome = biomes[0];
 
@@ -51,6 +55,7 @@ function updateBiomeSelector(keepSelected=false) {
     updateCustomBiome();
 }
 
+// Updates selected biome data
 function updateCustomBiome() {
 
     if(selectedBiome === undefined) return;
@@ -62,8 +67,10 @@ function updateCustomBiome() {
     document.getElementById("biomegreen").value = selectedBiome[1][1];
     document.getElementById("biomeblue").value = selectedBiome[1][2];
     document.getElementById("biomename").value = selectedBiome[2];
+    document.getElementById("traverse").value = selectedBiome[3];
 }
 
+// Saves changed to biome
 function saveBiome() {
 
     if(selectedBiome === undefined) return;
@@ -72,6 +79,7 @@ function saveBiome() {
     selectedBiome[1][0] = document.getElementById("biomered").value;
     selectedBiome[1][1] = document.getElementById("biomegreen").value;
     selectedBiome[1][2] = document.getElementById("biomeblue").value;
+    selectedBiome[3] = document.getElementById("traverse").value;
 
     let newName = document.getElementById("biomename").value
 
@@ -83,12 +91,14 @@ function saveBiome() {
     updateBiomeSelector(true);
 }
 
+// Deletes selected biome
 function deleteBiome() {
 
     biomes.splice(biomes.indexOf(selectedBiome), 1);
     updateBiomeSelector();
 }
 
+// Adds a new biome
 function addBiome() {
 
     let newBiome = [256, [200, 200, 200], "new biome " + biomeNum];
@@ -100,6 +110,7 @@ function addBiome() {
     updateBiomeSelector(true);
 }
 
+// Genererates a random terrain map based on seed
 function terrainMap(width, height) {
 
     updateBiomeSelector();
@@ -108,19 +119,35 @@ function terrainMap(width, height) {
     // function that runs when clicking on a cell to modify it
     function onModdify(cell, leftClick) {
 
-        if(leftClick) {
-            if(cell.type < biomes.length-1) cell.type++;
-            else cell.type = 0;
+        let perlinMap = document.getElementById("perlinmap").checked
+
+        if(!perlinMap) {
+            if(leftClick) {
+                if(cell.biome < biomes.length-1) cell.biome++;
+                else cell.biome = 0;
+            }
+            else {
+                if(cell.biome > 0) cell.biome--;
+                else cell.biome = biomes.length-1;
+            }
+            let rgb = biomes[cell.biome][1];
+            cell.style.backgroundColor
+            = "rgb("+rgb[0]+","+rgb[1]+","+rgb[2]+")";
         }
         else {
-            if(cell.type > 0) cell.type--;
-            else cell.type = biomes.length-1;
+            if(leftClick) {
+                if(cell.type <= 245) cell.type += 10;
+            }
+            else {
+                if(cell.type >= 10) cell.type -= 10;
+            }
+            let grayscale = 255 - cell.type;
+            cell.style.backgroundColor
+            = "rgb("+grayscale+","+grayscale+","+grayscale+")";
         }
-
-        cell.style.backgroundColor
-        = "rgb("+biomes[cell.type][1][0]+","+biomes[cell.type][1][1]+","+biomes[cell.type][1][2]+")";
     }
 
+    // Perlin noise parameters
     let scale = document.getElementById("scale").value;
     let octaves = document.getElementById("octaves").value;
     let lacunarity = document.getElementById("lacunarity").value;
@@ -131,16 +158,19 @@ function terrainMap(width, height) {
 
     let terraformMap = array2D(width, height);
 
+    // Calculates the perlin noise map
     PerlinNoise.getOctave(width, height, scale, octaves, lacunarity, persistance, RandomGenerator.seed, terraformMap);
 
+    // Displays either the biome map or the perlin map
     for(let y = 0; y < height; y++) {
         for(let x = 0; x < width; x++) {
     
             let height = terraformMap[y][x] * 255;
             
             if(perlinMap) {
-                height = 255 - height;
-                cellMap[y][x].style.backgroundColor = "rgb("+height+","+height+","+height+")";
+                let grayscale = 255 - height;
+                cellMap[y][x].style.backgroundColor = "rgb("+grayscale+","+grayscale+","+grayscale+")";
+                cellMap[y][x].type = height;
             }
             
             else {
@@ -150,7 +180,8 @@ function terrainMap(width, height) {
                     if(height <= biomes[b][0]) {
                         cellMap[y][x].style.backgroundColor
                         = "rgb("+biomes[b][1][0]+","+biomes[b][1][1]+","+biomes[b][1][2]+")";
-                        cellMap[y][x].type = b;
+                        cellMap[y][x].type = biomes[b][3];
+                        cellMap[y][x].biome = b;
                         break;
                     }
                 }

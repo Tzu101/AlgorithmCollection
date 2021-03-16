@@ -48,6 +48,20 @@
                 Map type options
             </div>
 
+            <div id="pathfinding"> 
+                Pathfinding:
+                <button onclick=""> Find path </button>
+
+                <label for="pathfindtype"> Pathfinding algorithm </label>
+                <select id="pathfindtype" onchange='setMapOptions()'>
+
+                    <option value="astar" selected="selected"> A star </option>
+                    <option value="flood"> Flood </option>
+                    <option value="dijkstra"> Dijkstra </option>
+
+                </select>
+            </div>
+
             <div>
                 Player input
 

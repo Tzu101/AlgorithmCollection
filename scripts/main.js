@@ -185,6 +185,8 @@ function setTerrainOptions() {
     
     <label for="biomename"> Biome name </label>
     <input type="text" id="biomename"></input>
+    <label for="traverse"> Traversable </label>
+    <input type="number" id="traverse"></input>
     <label for="biomeheight"> Biome height </label>
     <input type="number" id="biomeheight"></input>
     <label for="biomered"> Biome color </label>
