@@ -50,7 +50,7 @@
 
             <div id="pathfinding"> 
                 Pathfinding:
-                <button onclick=""> Find path </button>
+                <button onclick="pathfind()"> Find path </button>
 
                 <label for="pathfindtype"> Pathfinding algorithm </label>
                 <select id="pathfindtype" onchange='setMapOptions()'>
@@ -60,6 +60,8 @@
                     <option value="dijkstra"> Dijkstra </option>
 
                 </select>
+
+                <p id="pathresoult"></p>
             </div>
 
             <div>
@@ -83,4 +85,5 @@
     <script type="text/javascript" src="scripts/maze.js"></script>
     <script type="text/javascript" src="scripts/cave.js"></script>
     <script type="text/javascript" src="scripts/terrain.js"></script>
+    <script type="text/javascript" src="scripts/pathfinding.js"></script>
 </html>

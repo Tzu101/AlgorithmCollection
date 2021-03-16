@@ -267,7 +267,7 @@ function makeMap(width, height, defaultCell, onModdify) {
 
             // Creates a cell element and sets basic parameters
             let cell = row.insertCell(x);
-            cell.type = 0;
+            cell.type = 1;
             cell.setAttribute("class", "size " + cellClass + " " + defaultCell);
 
             // Adds the on click function to the cell for user left click
@@ -275,6 +275,10 @@ function makeMap(width, height, defaultCell, onModdify) {
 
             // Adds it for right click too
             cell.addEventListener("contextmenu", onClick);
+
+            // Adds coordinates
+            cell.x = x;
+            cell.y = y;
 
             cellMap[y][x] = cell;  // Adds cell to map
         }

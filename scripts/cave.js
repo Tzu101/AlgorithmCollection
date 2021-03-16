@@ -114,7 +114,7 @@ function caveMap(width, height) {
 
     function onModdify(cell) {
 
-        if(cell.type == 1) {
+        if(cell.type == 0) {
             cell.classList.remove("cavewall");
             cell.classList.add("caveempty");
         }
@@ -160,7 +160,7 @@ function caveMap(width, height) {
             if(terraformMap[y][x] == 1) {
                 cellMap[y][x].classList.remove("caveempty");
                 cellMap[y][x].classList.add("cavewall");
-                cellMap[y][x].type = 1;
+                cellMap[y][x].type = 0;
             }
         }
     }

@@ -188,4 +188,6 @@ function terrainMap(width, height) {
             }
         }
     }
+
+    return cellMap;
 }

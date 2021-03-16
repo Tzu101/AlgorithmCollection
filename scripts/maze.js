@@ -26,7 +26,7 @@ function toCellMaze(flatMap, cellMap) {
     function toWall(cell) {
         cell.classList.remove("mazeempty");
         cell.classList.add("mazewall");
-        cell.type = 1;
+        cell.type = 0;
     }
 
     // Converts thin wall to wall cells
@@ -397,7 +397,7 @@ function mazeMap(width, height) {
 
     function onModdify(cell) {
 
-        if(cell.type == 1) {
+        if(cell.type == 0) {
             cell.classList.remove("mazewall");
             cell.classList.add("mazeempty");
         }
