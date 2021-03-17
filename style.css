@@ -37,23 +37,28 @@ div {
 }
 
 .start {
-    background-color: Orange;
-    opacity: 0.80;
-}
-
-.visited {
-    background-color: Chocolate;
-    opacity: 0.80;
+    background-color: Green;
+    opacity: 0.50;
 }
 
 .inqueue {
+    background-color: Orange;
+    opacity: 0.50;
+}
+
+.visited {
     background-color: OrangeRed;
-    opacity: 0.80;
+    opacity: 0.50;
+}
+
+.path {
+    background-color: OrangeRed;
+    opacity: 0.50;
 }
 
 .goal {
-    background-color: Firebrick;
-    opacity: 0.80;
+    background-color: DarkRed;
+    opacity: 0.50;
 }
 
 .mazeempty {

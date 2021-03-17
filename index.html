@@ -50,18 +50,14 @@
 
             <div id="pathfinding"> 
                 Pathfinding:
+                <button onclick="clearpath()"> Clear path </button>
                 <button onclick="pathfind()"> Find path </button>
+                <button onclick="pathstep()"> Show step </button>
 
-                <label for="pathfindtype"> Pathfinding algorithm </label>
-                <select id="pathfindtype" onchange='setMapOptions()'>
+                <label for="pathspeed"> Speed </label>
+                <input type="number" id="pathspeed" value="10">
 
-                    <option value="astar" selected="selected"> A star </option>
-                    <option value="flood"> Flood </option>
-                    <option value="dijkstra"> Dijkstra </option>
-
-                </select>
-
-                <p id="pathresoult"></p>
+                <path id="pathresoult"></path>
             </div>
 
             <div>
