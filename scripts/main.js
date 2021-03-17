@@ -254,6 +254,8 @@ function reloadMap() {
     
     RandomGenerator.seed = newSeed;
 
+    clearpath();
+
     // Generates the specified map
     map = mapGenerator(mapWidth, mapHeight);
 }

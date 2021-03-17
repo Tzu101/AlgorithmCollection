@@ -17,7 +17,7 @@ class Pathfinder {
         this.goals.sort(this.compareCellDist(startCell));
         this.goalNum = 0;
 
-        ž// sets cell groups
+        // sets cell groups
         this.visitedCells = [];
         this.cellQueue = [];
         this.cellQueue.push(startCell);
@@ -139,7 +139,7 @@ class Pathfinder {
         for(let g = 0; g < this.goals.length; g++) 
             this.goals[g].innerHTML = "<div class='size cell goal'></div>";
 
-        startCell.innerHTML = "<div class='size cell start'></div>";
+        if(startCell != null) startCell.innerHTML = "<div class='size cell start'></div>";
     }
 
     // comparison function that retuens a comparator that sorts based on proximity to cell
