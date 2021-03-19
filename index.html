@@ -5,12 +5,13 @@
         <title> Map generator </title>
         <link rel="shortcut icon" href="Icon.png">
 
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="styles/function.css" type="text/css" />
+        <link rel="stylesheet" href="styles/look.css" type="text/css" />
     </head>
 
     <body>
-        <div>
-            <div>
+        <div class="parameters">
+            <div class="data">
                 Map options:
                 <button onclick="reloadMap()"> Reload map </button>
 
@@ -27,8 +28,8 @@
                 <input type="checkbox" id="grid"></input>
             </div>
 
-            <div>
-                <label for="maptype"> Map type </label>
+            <div class="data">
+                <label for="maptype"> Map type: </label>
                 <select id="maptype" onchange='setMapOptions()'>
 
                     <option value="maze" selected="selected"> Maze </option>
@@ -44,11 +45,11 @@
                 <input type="checkbox" id="setseed"></input>
             </div>
 
-            <div id="options"> 
+            <div id="options" class="data"> 
                 Map type options
             </div>
 
-            <div id="pathfinding"> 
+            <div id="pathfinding" class="data"> 
                 Pathfinding:
                 <button onclick="clearpath()"> Clear path </button>
                 <button onclick="pathfind()"> Find path </button>
@@ -60,8 +61,8 @@
                 <path id="pathresoult"></path>
             </div>
 
-            <div>
-                Player input
+            <div class="data">
+                Player input:
 
                 <button onclick="setClickAction('moddify')"> Moddify map </button>
 
@@ -69,11 +70,9 @@
 
                 <button onclick="setClickAction('goal')"> Place goal points </button>
             </div>
-
-            <div id="mapcontainer"></div>
         </div>
-        <br>
 
+        <div id="mapcontainer"></div>
     </body>
 
     <script type="text/javascript" src="scripts/main.js"></script>

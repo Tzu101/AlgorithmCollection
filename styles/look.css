@@ -1,0 +1,62 @@
+body {
+    background-color: LightBlue;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+button {
+    background-color: Gray;
+}
+button:hover {
+    background-color: darkGray;
+}
+
+/* Main map */
+#map {
+    border: 2px solid Black;
+    border-spacing:0;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.parameters {
+    background-color: DimGray;
+    border-bottom: 0.5rem solid #505050;
+    font-size: 1.2rem;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+
+    z-index: 1;
+}
+
+.data {
+    margin: 0.5rem;
+}
+
+/* Turn off arrows in input on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Turn off arrows in input on Firefox */
+/* Makes the input smaller and centers text */
+input[type=number] {
+    -moz-appearance: textfield;
+
+    width: 3rem;
+    text-align: center; 
+}
+
+/* Shortens text input */
+input[type=text] {
+    width: 6rem;
+    text-align: center; 
+}
